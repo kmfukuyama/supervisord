@@ -2,6 +2,7 @@ module supervisord
 
 require (
 	github.com/GeertJohan/go.rice v1.0.0
+	github.com/google/gops v0.3.12
 	github.com/gorilla/mux v1.7.3
 	github.com/gorilla/rpc v1.2.0
 	github.com/jessevdk/go-flags v1.4.0

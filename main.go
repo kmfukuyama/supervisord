@@ -3,8 +3,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"github.com/jessevdk/go-flags"
-	log "github.com/sirupsen/logrus"
 	"os"
 	"os/signal"
 	"path/filepath"
@@ -12,6 +10,10 @@ import (
 	"strings"
 	"syscall"
 	"unicode"
+
+	"github.com/google/gops/agent"
+	"github.com/jessevdk/go-flags"
+	log "github.com/sirupsen/logrus"
 )
 
 // Options the command line options
@@ -133,6 +135,11 @@ func runServer() {
 }
 
 func main() {
+
+	o := agent.Options{}
+	agent.Listen(o)
+	defer agent.Close()
+
 	ReapZombie()
 
 	if _, err := parser.Parse(); err != nil {
